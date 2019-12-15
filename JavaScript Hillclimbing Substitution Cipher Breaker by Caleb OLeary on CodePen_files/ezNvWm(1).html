@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://cdpn.io/caleboleary/fullembedgrid/ezNvWm?type=embed&animations=run -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+<title>CodePen - Hillclimbing Visualization</title>
+<style>
+  .bar {
+  width:10px;
+  margin-right:3px;
+  background:#5050F5;
+  float:left;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+Hillclimbing Demo, pick a random position and find the nearest peak, if at peak, pick another random position.
+<div class="target"><div class="bar" style="height: 6px; margin-top: 134px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 18px; margin-top: 122px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 30px; margin-top: 110px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 40px; margin-top: 100px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 50px; margin-top: 90px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 92px; margin-top: 48px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 134px; margin-top: 6px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 135px; margin-top: 5px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 136px; margin-top: 4px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 122px; margin-top: 18px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 108px; margin-top: 32px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 86px; margin-top: 54px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 64px; margin-top: 76px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 44px; margin-top: 96px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 24px; margin-top: 116px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 68px; margin-top: 72px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 112px; margin-top: 28px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 125px; margin-top: 15px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 138px; margin-top: 2px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 139px; margin-top: 1px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 140px; margin-top: 0px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 127px; margin-top: 13px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 114px; margin-top: 26px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 100px; margin-top: 40px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 86px; margin-top: 54px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 75px; margin-top: 65px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 64px; margin-top: 76px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 44px; margin-top: 96px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 24px; margin-top: 116px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 46px; margin-top: 94px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 68px; margin-top: 72px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 88px; margin-top: 52px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 108px; margin-top: 32px; background: red;"></div><div class="bar" style="height: 79px; margin-top: 61px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 50px; margin-top: 90px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 35px; margin-top: 105px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 20px; margin-top: 120px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 13px; margin-top: 127px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 6px; margin-top: 134px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 6px; margin-top: 134px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 6px; margin-top: 134px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 18px; margin-top: 122px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 30px; margin-top: 110px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 40px; margin-top: 100px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 50px; margin-top: 90px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 92px; margin-top: 48px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 134px; margin-top: 6px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 135px; margin-top: 5px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 136px; margin-top: 4px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 122px; margin-top: 18px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 108px; margin-top: 32px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 86px; margin-top: 54px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 64px; margin-top: 76px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 44px; margin-top: 96px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 24px; margin-top: 116px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 68px; margin-top: 72px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 112px; margin-top: 28px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 125px; margin-top: 15px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 138px; margin-top: 2px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 130px; margin-top: 10px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 122px; margin-top: 18px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 118px; margin-top: 22px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 114px; margin-top: 26px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 100px; margin-top: 40px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 86px; margin-top: 54px; background: rgb(80, 80, 245);"></div><div class="bar" style="height: 75px; margin-top: 65px; background: rgb(80, 80, 245);"></div></div>
+<script src="./stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src="./jquery-2.2.4.min.js"></script>
+<script id="rendered-js">
+      var dataSet = [3, 9, 15, 20, 25, 46, 67, 67.5, 68, 61, 54, 43, 32, 22, 12, 34, 56, 62.5, 69, 69.5, 70, 63.5, 57, 50, 43, 37.5, 32, 22, 12, 23, 34, 44, 54, 39.5, 25, 17.5, 10, 6.5, 3, 3, 3, 9, 15, 20, 25, 46, 67, 67.5, 68, 61, 54, 43, 32, 22, 12, 34, 56, 62.5, 69, 65, 61, 59, 57, 50, 43, 37.5];
+for (var i = 0; i < dataSet.length; i++) {if (window.CP.shouldStopExecution(0)) break;
+  $('.target').append('<div class="bar" style="height:' + dataSet[i] * 2 + 'px;margin-top:' + (140 - dataSet[i] * 2) + 'px;"></div>');
+}window.CP.exitedLoop(0);
+function search(position) {
+  $('.bar').css('background', '#5050F5');
+  $('.bar').eq(position).css('background', 'red');
+  setTimeout(function () {
+    if (typeof dataSet[position + 1] !== 'undefined' && dataSet[position + 1] > dataSet[position]) {
+      position++;
+      search(position);
+    } else
+    if (typeof dataSet[position - 1] !== 'undefined' && dataSet[position - 1] > dataSet[position]) {
+      position--;
+      search(position);
+    } else
+    {
+      var random = Math.floor(Math.random() * dataSet.length - 1) + 1;
+      //peaks.push(dataSet[position]);
+      //letsClimb = false;
+      search(random);
+    }
+  }, 500);
+}
+search(3);
+      //# sourceURL=pen.js
+    </script>
+<script src="./css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js"></script>
+
+
+</body></html>

@@ -1,4 +1,5 @@
 const utils = require('./utils');
+const { score, mutate, deSubstitute, orderFrequency } = require("./helpers")
 
 class Substitution {
   constructor() {
@@ -12,16 +13,32 @@ class Substitution {
         .map((na) => na.join(''))
         .join(' ');
     };
-    this.decrypt = (ciphertext, key) => {
-      const keyMap = utils.getSubstitutionMapFromKey(key);
-      return ciphertext
-        .replace(/\ +/g, ' ')
-        .split(' ')
-        .map((s) => s.split(''))
-        .map((s) => s.map((c) => keyMap.indexOf(c)))
-        .map((na) => na.map((n) => utils.ALPHABET[n]))
-        .map((na) => na.join(''))
-        .join(' ');
+    this.decrypt = (str, attempts) => {
+      var runningKeys = [],
+			runningWinner,
+			runningWinnerScore; 
+      runningKeys.push(orderFrequency(str));
+      var scoreVar = score(str,runningKeys);
+      runningWinner = scoreVar[0];
+      runningWinnerScore = scoreVar[1];
+      runningKeys = [runningWinner];
+      for (var attempt = 1; attempt < attempts; attempt++) {
+        while(runningKeys.length < 20) {
+          runningKeys.push(mutate(runningWinner,runningKeys.length));
+        } 
+        scoreVar = score(str,runningKeys);
+        if (scoreVar[1] > runningWinnerScore) {
+          runningWinner = scoreVar[0];
+          runningWinnerScore = scoreVar[1];
+        }
+        runningKeys = [runningWinner];
+        if (attempt%100===0) console.log('attempt: '+attempt + ' current winner has a score of: ' + runningWinnerScore);
+      }
+      const plaintext = {
+        key:runningWinner,
+        decoded: deSubstitute(str, runningWinner)
+      };
+      return plaintext.decoded;
     };
   }
 }
