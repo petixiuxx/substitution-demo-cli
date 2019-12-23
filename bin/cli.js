@@ -71,7 +71,7 @@
         .map((a, i) => ({
           name:     `${i}`,
           type:     'input',
-          message:  `Enter ${a.n} (${a.t.capitalize()}):`,
+          message:  action === 'encrypt' ? `Enter ${a.n} (${a.t.capitalize()}):` : 'Enter number of iterations',
           validate: (inp) => (inp === `${parseArgument(a, inp)}`)
         }));
 
